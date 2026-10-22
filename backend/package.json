@@ -1,0 +1,20 @@
+{
+  "name": "campus-lost-found-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "package": "npm install --omit=dev && npm run zip",
+    "zip": "powershell -NoProfile -Command \"if (Test-Path lambda.zip) { Remove-Item lambda.zip }; Compress-Archive -Path index.mjs,node_modules,package.json -DestinationPath lambda.zip\""
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.862.0",
+    "@aws-sdk/client-s3": "^3.862.0",
+    "@aws-sdk/lib-dynamodb": "^3.862.0",
+    "@aws-sdk/s3-request-presigner": "^3.862.0",
+    "@aws-sdk/client-sns": "^3.862.0"
+  }
+}
